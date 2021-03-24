@@ -31,7 +31,8 @@ struct Remote
     sub.request.destination_topic = remote_topic;
     sub.request.source_topic = remote_topic;
     sub.request.queue_size = 1;
-    //client.waitForExistence();
+    if(!client.waitForExistence(ros::Duration(5)))
+      ROS_WARN_STREAM("Timeout waiting for udp_bridge remote advertise service");
     client.call(sub);
   }
 
