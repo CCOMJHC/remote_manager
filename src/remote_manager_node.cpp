@@ -74,14 +74,14 @@ int main(int argc, char **argv)
 
   ros::NodeHandle nh;
 
-  ros::Subscriber local_helm_sub = nh.subscribe("piloting_mode/manual/helm", 1, localHelmCallback);
+  ros::Subscriber local_helm_sub = nh.subscribe("project11/piloting_mode/manual/helm", 1, localHelmCallback);
   ros::Subscriber local_command_sub = nh.subscribe("project11/command", 1, localCommandCallback);
 
   local_publishers["project11/response"] = nh.advertise<std_msgs::String>("project11/response",1);
 
 
   remotes[current_remote].remote = current_remote;
-  remotes[current_remote].addPublisher<marine_msgs::Helm>("piloting_mode/manual/helm");
+  remotes[current_remote].addPublisher<marine_msgs::Helm>("project11/piloting_mode/manual/helm");
   remotes[current_remote].addPublisher<std_msgs::String>("project11/command");
   remotes[current_remote].addSubscriber<std_msgs::String>("project11/response");
 
