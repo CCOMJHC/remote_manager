@@ -5,13 +5,13 @@ add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
   std_msgs
-  marine_msgs
+  project11_msgs
   roscpp
   udp_bridge
 )
 
 catkin_package(
-  CATKIN_DEPENDS std_msgs marine_msgs roscpp udp_bridge
+  CATKIN_DEPENDS std_msgs project11_msgs roscpp udp_bridge
 )
 
 include_directories(

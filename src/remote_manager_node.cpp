@@ -5,7 +5,7 @@
 
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include "marine_msgs/Helm.h"
+#include "project11_msgs/Helm.h"
 #include "udp_bridge/Subscribe.h"
 
 std::string current_remote;
@@ -53,7 +53,7 @@ struct Remote
 typedef std::map<std::string, Remote> RemoteMap;
 RemoteMap remotes;
 
-void localHelmCallback(const marine_msgs::Helm::ConstPtr &msg)
+void localHelmCallback(const project11_msgs::Helm::ConstPtr &msg)
 {
   if(remotes.count(current_remote) && remotes[current_remote].publishers.count("piloting_mode/manual/helm"))
     remotes[current_remote].publishers["piloting_mode/manual/helm"].publish(msg);
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 
 
   remotes[current_remote].remote = current_remote;
-  remotes[current_remote].addPublisher<marine_msgs::Helm>("project11/piloting_mode/manual/helm");
+  remotes[current_remote].addPublisher<project11_msgs::Helm>("project11/piloting_mode/manual/helm");
   remotes[current_remote].addPublisher<std_msgs::String>("project11/command");
   remotes[current_remote].addSubscriber<std_msgs::String>("project11/response");
 
