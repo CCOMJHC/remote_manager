@@ -28,6 +28,7 @@ struct Remote
     ros::ServiceClient client = nh.serviceClient<udp_bridge::Subscribe>("udp_bridge/remote_advertise");
     udp_bridge::Subscribe sub;
     sub.request.remote = remote;
+    sub.request.connection_id = "default";
     sub.request.destination_topic = remote_topic;
     sub.request.source_topic = remote_topic;
     sub.request.queue_size = 1;
